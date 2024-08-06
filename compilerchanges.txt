@@ -1,0 +1,73 @@
+Followed this video:
+    https://www.youtube.com/watch?v=7-dL6a5_B3I
+
+Added:
+    "-I${workspaceFolder}/dependencies/include",
+    "-L${workspaceFolder}/dependencies/library",
+    "-std=c++17",
+    "-Wall",
+    "${workspaceFolder}/dependencies/library/libglfw.3.4.dylib",
+	"${workspaceFolder}/glad.c",				
+    "-framework",
+	"OpenGL",
+	"-framework",
+	"Cocoa",
+	"-framework",
+	"IOKit",
+	"-framework",
+    "CoreVideo",
+	"-framework",
+	"CoreFoundation",
+    "-Wno-deprecated"
+
+Changed:
+    "${file}", -> "${workspaceFolder}/*.cpp",
+    "${fileDirname}/${fileBasenameNoExtension}" -> "${workspaceFolder}/app",
+
+Compiler JSON:
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "C/C++: clang++ build active file",
+			"command": "/usr/bin/clang++",
+			"args": [
+				"-std=c++17",
+				"-fcolor-diagnostics",
+				"-Wall",
+				"-fansi-escape-codes",
+				"-I${workspaceFolder}/dependencies/include",
+				"-L${workspaceFolder}/dependencies/library",
+				"-g",
+				"${workspaceFolder}/*.cpp",
+				"${workspaceFolder}/glad.c",				
+				"${workspaceFolder}/dependencies/library/libglfw.3.4.dylib",
+				"-o",
+				"${workspaceFolder}/app",
+				"-framework",
+				"OpenGL",
+				"-framework",
+				"Cocoa",
+				"-framework",
+				"IOKit",
+				"-framework",
+				"CoreVideo",
+				"-framework",
+				"CoreFoundation",
+				"-Wno-deprecated"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "compiler: /usr/bin/clang++"
+		}
+	]
+}
